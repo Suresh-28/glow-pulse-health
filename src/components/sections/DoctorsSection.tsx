@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { FloatingLabel } from "@/components/FloatingLabel"
 import { Star, MapPin, Calendar } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
+import { Link } from "react-router-dom"
 
 const doctors = [
   {
@@ -146,9 +147,11 @@ export function DoctorsSection() {
 
         {/* Section CTA */}
         <div className={`text-center transition-all duration-1000 delay-500 ${isVisible ? 'slide-in-bottom' : 'opacity-0'}`}>
-          <Button variant="medical-outline" size="lg">
-            View All Doctors
-          </Button>
+          <Link to="/doctors">
+            <Button variant="medical-outline" size="lg">
+              View All Doctors
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

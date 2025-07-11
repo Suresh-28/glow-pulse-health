@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { FloatingLabel } from "@/components/FloatingLabel"
+import { BookingDialog } from "@/components/BookingDialog"
 import { Calendar, MessageCircle, Star, Heart } from "lucide-react"
 import { useEffect, useState } from "react"
 
@@ -46,19 +47,24 @@ export function HeroSection() {
 
           {/* CTA Buttons */}
           <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 transition-all duration-1000 delay-500 ${isLoaded ? 'fade-scale-in' : 'opacity-0'}`}>
-            <Button 
-              variant="medical-glow" 
-              size="xl" 
-              ripple 
-              className="group"
-            >
-              <Calendar className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-              Book Appointment
-            </Button>
+            <BookingDialog>
+              <Button 
+                variant="medical-glow" 
+                size="xl" 
+                ripple 
+                className="group"
+              >
+                <Calendar className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
+                Book Appointment
+              </Button>
+            </BookingDialog>
             <Button 
               variant="medical-outline" 
               size="xl" 
               className="group"
+              onClick={() => {
+                document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })
+              }}
             >
               <MessageCircle className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
               Explore Services

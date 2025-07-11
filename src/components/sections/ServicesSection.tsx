@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { FloatingLabel } from "@/components/FloatingLabel"
 import { Heart, Video, Shield, Stethoscope, Pill, Users } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
+import { Link } from "react-router-dom"
 
 const services = [
   {
@@ -134,9 +135,11 @@ export function ServicesSection() {
 
         {/* Section CTA */}
         <div className={`text-center transition-all duration-1000 delay-500 ${isVisible ? 'slide-in-bottom' : 'opacity-0'}`}>
-          <Button variant="medical-glow" size="lg" className="shadow-glow">
-            View All Services
-          </Button>
+          <Link to="/services">
+            <Button variant="medical-glow" size="lg" className="shadow-glow">
+              View All Services
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

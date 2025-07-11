@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import { ChatInterface } from "@/components/ChatInterface"
 import { Video, MessageCircle, Clock, Shield } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
@@ -72,15 +73,17 @@ export function VirtualConsultSection() {
 
           {/* CTA */}
           <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'slide-in-bottom' : 'opacity-0'}`}>
-            <Button 
-              variant="medical-glow" 
-              size="xl" 
-              ripple
-              className="group shadow-glow hover:shadow-[0_0_80px_hsl(var(--medical-primary)/0.7)]"
-            >
-              <MessageCircle className="mr-2 h-6 w-6 group-hover:scale-110 transition-transform" />
-              Start Live Chat
-            </Button>
+            <ChatInterface>
+              <Button 
+                variant="medical-glow" 
+                size="xl" 
+                ripple
+                className="group shadow-glow hover:shadow-[0_0_80px_hsl(var(--medical-primary)/0.7)]"
+              >
+                <MessageCircle className="mr-2 h-6 w-6 group-hover:scale-110 transition-transform" />
+                Start Live Chat
+              </Button>
+            </ChatInterface>
             <p className="text-sm text-muted-foreground mt-4">
               Average wait time: <span className="text-medical-primary font-semibold">2 minutes</span>
             </p>

@@ -1,38 +1,62 @@
 import { Card, CardContent } from "@/components/ui/card"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { FloatingLabel } from "@/components/FloatingLabel"
-import { Star, Quote } from "lucide-react"
+import { Star } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
 const testimonials = [
   {
     name: "Maria Rodriguez",
-    condition: "Heart Surgery",
+    service: "Heart Surgery",
     rating: 5,
-    testimonial: "The cardiac team saved my life. Their expertise and compassionate care made all the difference during my recovery.",
-    image: "https://images.unsplash.com/photo-1494790108755-2616b612b1-b?w=400&h=400&fit=crop&crop=face",
-    badge: "Surgery Success"
+    content: "The cardiac team saved my life. Their expertise and compassionate care made all the difference during my recovery.",
+    image: "/placeholder.svg",
+    label: "Surgery Success"
   },
   {
     name: "James Thompson", 
-    condition: "Diabetes Management",
+    service: "Diabetes Management",
     rating: 5,
-    testimonial: "Dr. Chen's telemedicine consultations have been incredible. Managing my diabetes has never been easier.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-    badge: "Verified Patient"
+    content: "Dr. Chen's telemedicine consultations have been incredible. Managing my diabetes has never been easier.",
+    image: "/placeholder.svg",
+    label: "Verified Patient"
   },
   {
     name: "Sarah Williams",
-    condition: "Pediatric Care",
+    service: "Pediatric Care",
     rating: 5,
-    testimonial: "The pediatric team made my daughter feel comfortable during her treatment. Exceptional care for children.",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
-    badge: "Family Care"
+    content: "The pediatric team made my daughter feel comfortable during her treatment. Exceptional care for children.",
+    image: "/placeholder.svg",
+    label: "Family Care"
+  },
+  {
+    name: "Robert Chen",
+    service: "Emergency Care",
+    rating: 5,
+    content: "When I had my accident, the emergency team was incredibly fast and professional. Saved my life that night.",
+    image: "/placeholder.svg",
+    label: "Emergency Care"
+  },
+  {
+    name: "Emily Davis",
+    service: "Dermatology",
+    rating: 5,
+    content: "Dr. Thompson helped me with my skin condition. The treatment was effective and the care was exceptional.",
+    image: "/placeholder.svg",
+    label: "Skin Care Expert"
+  },
+  {
+    name: "Michael Johnson",
+    service: "Orthopedics",
+    rating: 5,
+    content: "After my knee surgery, I'm back to playing sports. The orthopedic team here is simply the best.",
+    image: "/placeholder.svg",
+    label: "Sports Recovery"
   }
 ]
 
 export function TestimonialsSection() {
   const [isVisible, setIsVisible] = useState(false)
-  const [currentIndex, setCurrentIndex] = useState(0)
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -50,14 +74,6 @@ export function TestimonialsSection() {
     }
 
     return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-    }, 5000)
-
-    return () => clearInterval(interval)
   }, [])
 
   return (
@@ -79,69 +95,44 @@ export function TestimonialsSection() {
           </p>
         </div>
 
-        {/* Testimonials Carousel */}
-        <div className="max-w-4xl mx-auto">
-          <div className="relative h-96 overflow-hidden">
-            {testimonials.map((testimonial, index) => (
-              <Card 
-                key={testimonial.name}
-                className={`absolute inset-0 transition-all duration-700 transform ${
-                  index === currentIndex 
-                    ? 'translate-x-0 opacity-100 scale-100' 
-                    : index < currentIndex 
-                      ? '-translate-x-full opacity-0 scale-95'
-                      : 'translate-x-full opacity-0 scale-95'
-                } border-border/50 bg-card/80 backdrop-blur-sm`}
-              >
-                <FloatingLabel text={testimonial.badge} variant="success" />
+        {/* Testimonials Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <Card 
+              key={testimonial.name}
+              className={`card-hover border-border/50 bg-card/80 backdrop-blur-sm hover:border-medical-primary/50 transition-all duration-700 ${
+                isVisible ? 'fade-scale-in' : 'opacity-0'
+              }`}
+              style={{ animationDelay: `${index * 150}ms` }}
+            >
+              <CardContent className="p-6 text-center">
+                <div className="flex justify-center mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 text-tertiary fill-current" />
+                  ))}
+                </div>
                 
-                <CardContent className="p-8 h-full flex flex-col justify-center">
-                  <div className="text-center">
-                    {/* Quote Icon */}
-                    <Quote className="h-12 w-12 text-medical-primary/30 mx-auto mb-6" />
-                    
-                    {/* Testimonial Text */}
-                    <blockquote className="text-xl md:text-2xl font-medium mb-8 leading-relaxed">
-                      "{testimonial.testimonial}"
-                    </blockquote>
-                    
-                    {/* Patient Info */}
-                    <div className="flex items-center justify-center gap-4">
-                      <img 
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-16 h-16 rounded-2xl object-cover border-2 border-medical-primary/20"
-                      />
-                      <div className="text-left">
-                        <h4 className="font-semibold text-lg">{testimonial.name}</h4>
-                        <p className="text-medical-primary">{testimonial.condition}</p>
-                        <div className="flex items-center gap-1 mt-1">
-                          {[...Array(testimonial.rating)].map((_, i) => (
-                            <Star key={i} className="h-4 w-4 text-tertiary fill-current" />
-                          ))}
-                        </div>
-                      </div>
-                    </div>
+                <blockquote className="text-base mb-6 leading-relaxed italic text-muted-foreground">
+                  "{testimonial.content}"
+                </blockquote>
+                
+                <div className="flex items-center justify-center gap-3 mb-4">
+                  <Avatar className="h-10 w-10 border-2 border-medical-primary/20">
+                    <AvatarImage src={testimonial.image} alt={testimonial.name} />
+                    <AvatarFallback className="bg-gradient-primary text-white text-sm">
+                      {testimonial.name.split(' ').map(n => n[0]).join('')}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div className="text-left">
+                    <p className="font-semibold text-sm">{testimonial.name}</p>
+                    <p className="text-xs text-muted-foreground">{testimonial.service}</p>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          {/* Carousel Indicators */}
-          <div className="flex justify-center gap-2 mt-8">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex 
-                    ? 'bg-medical-primary scale-125' 
-                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                }`}
-              />
-            ))}
-          </div>
+                </div>
+                
+                <FloatingLabel text={testimonial.label} variant="secondary" />
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>
