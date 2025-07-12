@@ -94,8 +94,6 @@ export function DoctorsSection() {
               }`}
               style={{ animationDelay: `${index * 200}ms` }}
             >
-              <FloatingLabel text={doctor.badge} variant="success" />
-              
               <CardContent className="p-6 text-center">
                 {/* Doctor Image */}
                 <div className="relative w-24 h-24 mx-auto mb-4 overflow-hidden rounded-2xl group-hover:scale-110 transition-transform duration-300">
