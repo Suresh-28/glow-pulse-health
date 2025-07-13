@@ -1,73 +1,40 @@
-# Welcome to your Lovable project
+<img width="1912" height="915" alt="Screenshot 2025-07-13 213116" src="https://github.com/user-attachments/assets/146928c0-d5a1-4866-85b7-ffc80e7174dc" />
 
-## Project info
+# Glow Pulse Health 💓
 
-**URL**: https://lovable.dev/projects/0f4f81df-0d6e-4a0e-8b11-78f82f7a3620
 
-## How can I edit this code?
+A modern, AI-generated healthcare dashboard template created with Lovable AI. Monitor vital health metrics, visual trends, and wellness data through an intuitive, responsive interface designed for clinics, wellness apps, or personal health tracking.
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## 🌐 Live Demo
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/0f4f81df-0d6e-4a0e-8b11-78f82f7a3620) and start prompting.
+Experience it here:  
+👉 [glow-pulse-health.lovable.app](https://glow-pulse-health.lovable.app/)
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## ✨ Features
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **Health metrics at a glance**: View heart rate, steps, sleep, and other vital statistics  
+- **Interactive trend charts** for long-term wellness insights  
+- **Responsive design**, perfect for both desktop and mobile use  
+- **Easy-to-customize** components—Lovable AI handles the code generation  
+- **One-click deployment via GitHub integration**
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## 🚀 Quick Start
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Requirements
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+- Node.js ≥ 16  
+- npm or yarn
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Install & Launch
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+git clone https://github.com/your-username/glow-pulse-health.git
+cd glow-pulse-health
+npm install
 npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/0f4f81df-0d6e-4a0e-8b11-78f82f7a3620) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
